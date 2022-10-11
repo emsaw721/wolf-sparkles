@@ -87,5 +87,15 @@ module.exports = templateData => {
       <body>
         <header>
             <div class="container flex-row justify-space-between align-center py-3">
-                <h1 class=`
-}
+                <h1 class="page-title text-secondary bg-dark py-2 px-3">Employee Page</h1>
+        </header>
+        
+        <main class="container my-5">
+            ${generateStudent(student)}
+            ${generateEngineer(engineer)}
+            ${generateManager(manager)}
+        </main>
+        </body>
+        </html>
+        `;
+}; 
