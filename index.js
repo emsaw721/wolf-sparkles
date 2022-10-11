@@ -58,7 +58,7 @@ const promptEmployee = employeeData => {
 promptEmployee()
 .then(employeeData => {
     return generatePage(employeeData);
-    // generatePage not a function 
+   
 })
 .then(pageHTML => {
     return writeFile(pageHTML);
