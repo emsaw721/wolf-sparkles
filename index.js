@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
-const {writeFile, copyFile} = require(./utils/generate-site); 
+const {writeFile, copyFile} = require('./utils/generate-site'); 
 
 const promptEmployee = employeeData => {
 
@@ -58,6 +58,7 @@ const promptEmployee = employeeData => {
 promptEmployee()
 .then(employeeData => {
     return generatePage(employeeData);
+    // generatePage not a function 
 })
 .then(pageHTML => {
     return writeFile(pageHTML);
