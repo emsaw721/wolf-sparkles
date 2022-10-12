@@ -4,7 +4,7 @@ const generateStudent = studentArr => {
     <h2 class="text-dark bg-primary p-2 display-inline-block">Interns</h2>
     <div class="flex-row justify-space-between">
     ${studentArr
-    .filer(({feature}) => feature)
+    .filter(({feature}) => feature)
     .map(({ name, id, email, school}) => {
         return `
         <div class="col-12 mb-2 bg-dark text-light p-3>
@@ -20,6 +20,7 @@ const generateStudent = studentArr => {
     </div>
     </section>
     `; 
+}; 
 
 const generateEngineer = engineerArr => {
         return `
@@ -43,6 +44,7 @@ const generateEngineer = engineerArr => {
         </div>
         </section>
         `; 
+}; 
 
 const generateManager = managerArr => {
             return `
@@ -66,6 +68,7 @@ const generateManager = managerArr => {
             </div>
             </section>
             `; 
+        }; 
 
 
 
@@ -91,9 +94,9 @@ module.exports = templateData => {
         </header>
         
         <main class="container my-5">
-            ${generateStudent(student)}
-            ${generateEngineer(engineer)}
-            ${generateManager(manager)}
+            ${generateStudent()}
+            ${generateEngineer()}
+            ${generateManager()}
         </main>
         </body>
         </html>

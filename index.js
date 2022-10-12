@@ -38,6 +38,13 @@ const promptEmployee = employeeData => {
             message: "What is the employee's email?"
         },
         {
+            type: 'checkbox',
+            name:'type',
+            message:'What type of employee is this?',
+            choices:['Intern', 'Engineer', 'Manager'] 
+        },
+        // make it so one of these shows up when the corresponding selection is made 
+        {
             type: 'text',
             name: 'github',
             message: "What is the engineer's Github username?"
