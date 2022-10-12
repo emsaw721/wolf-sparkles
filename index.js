@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
-const {writeFile, copyFile} = require('./utils/generate-site'); 
+const fs = require('fs'); 
 
 const promptEmployee = employeeData => {
 
@@ -53,20 +53,28 @@ const promptEmployee = employeeData => {
             message: "What is the manager's office number?"
         }
     ])
+    .then(employeeData => {
+        console.log(employeeData)
+        const pageTemplate= generatePage(employeeData);
+        fs.writeFile('./dist/index.html', pageTemplate, err => {
+            if(err) {
+               return console.log(err); 
+            }
+           console.log('File saved!')
+        });
+
+        fs.copyfile('./src/style.css', './dist/style.css', err => {
+            if(err) {
+                return console.log(err)
+            }
+            console.log('Stylesheet created!')
+        });
+        
+    })
+    .catch(err => {
+        console.log(err)
+    })
+
 }; 
 
 promptEmployee()
-.then(employeeData => {
-    return generatePage(employeeData);
-   
-})
-.then(pageHTML => {
-    return writeFile(pageHTML);
-})
-.then(writeFileResponse => {
-    console.log(writeFileResponse); 
-    return copyFile();
-})
-.then(copyFileResponse => {
-    console.log(copyFileResponse); 
-})
