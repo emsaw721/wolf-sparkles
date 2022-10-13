@@ -2,9 +2,9 @@ const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
 const fs = require('fs'); 
 
-const Engineer = require('./Engineer')
-const Intern = require('./Intern')
-const Manager = require('./Manager')
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
 
 const promptEmployee = employeeData => {
 

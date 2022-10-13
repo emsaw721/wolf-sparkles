@@ -1,6 +1,6 @@
 const Employee = require('../lib/Employee');
 
-jest.mock('../lib/Employee');
+// jest.mock('../lib/Employee');
 
 test('Creates an employee object', () => {
     const employee = new Employee('');
@@ -8,7 +8,6 @@ test('Creates an employee object', () => {
     expect(employee.name).toBe(expect.any(String));
     expect(employee.id).toBe(expect.any(String));
     expect(employee.email).toBe(expect.any(String));
-    expect(employee.role).toBe(expect.any(String)); 
 });
 
 test("gets employee's id", () => {
