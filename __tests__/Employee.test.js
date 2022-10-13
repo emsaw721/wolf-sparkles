@@ -13,13 +13,13 @@ test('Creates an employee object', () => {
 test("gets employee's id", () => {
     const employee = new Employee('');
 
-    expect(employee.getId()).toBe(expect(Employee.id));
+    expect(employee.id).toBe(employee.id);
 }); 
 
 test("gets employee's email", () => {
     const employee = new Employee('');
 
-    expect(employee.getEmail()).toBe(expect(Employee.email));
+    expect(Employee.getEmail()).toContainString(Employee.email);
 });
 
 // test("gets employee's role", () => {
