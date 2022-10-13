@@ -26,4 +26,4 @@ test("gets manager's office number", () => {
     const manager = new Employee('');
 
     expect(manager.officeNumber).toBe(manager.officeNumber); 
-})
+}); 
