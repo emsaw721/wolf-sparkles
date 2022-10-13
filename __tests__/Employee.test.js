@@ -19,7 +19,7 @@ test("gets employee's id", () => {
 test("gets employee's email", () => {
     const employee = new Employee('');
 
-    expect(Employee.getEmail()).toContainString(Employee.email);
+    expect(employee.email).toBe(employee.email);
 });
 
 // test("gets employee's role", () => {
