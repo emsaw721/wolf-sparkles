@@ -4,7 +4,7 @@ const generateStudent = studentArr => {
     <h2 class="text-dark bg-primary p-2 display-inline-block">Interns</h2>
     <div class="flex-row justify-space-between">
     ${studentArr
-    .filter(({feature}) => feature)
+    // doesn't like .filter(saying cannot read properties of undefined), probably won't like .map either
     .map(({ name, id, email, school}) => {
         return `
         <div class="col-12 mb-2 bg-dark text-light p-3>
