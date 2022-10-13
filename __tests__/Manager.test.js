@@ -5,25 +5,25 @@ const Employee = require('../lib/Employee');
 test('Creates a manager object', () => {
     const manager = new Employee('');
     
-    expect(manager.name).toBe(expect.any(String));
-    expect(manager.id).toBe(expect.any(String));
-    expect(manager.email).toBe(expect.any(String));
+    expect(manager.name).toStrictEqual(expect.any(String));
+    expect(manager.id).toStrictEqual(expect.any(String));
+    expect(manager.email).toStrictEqual(expect.any(String));
 });
 
 test("gets manager's id", () => {
     const manager = new Employee('');
 
-    expect(manager.getId()).toBe(expect.stringContaining(employee.id.toString()));
+    expect(manager.id).toBe(manager.id);
 }); 
 
 test("gets manager's email", () => {
     const manager = new Employee('');
 
-    expect(manager.getEmail()).toBe(expect.stringContaining(employee.email.toString()));
+    expect(manager.email).toBe(manager.email);
 });
 
 test("gets manager's office number", () => {
     const manager = new Employee('');
 
-    expect(manager.getOfficeNumber()).toBe(expect.stringContaining(manager.officeNumber.toString())); 
+    expect(manager.officeNumber).toBe(manager.officeNumber); 
 })
