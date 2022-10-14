@@ -6,66 +6,51 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
+
 const promptQuestions = employeeData => {
 return inquirer
 .prompt([
 {
-    type: 'confirm',
-    name:'add',
-    message:'Would you like to add an employee?',
-    when: (answers) => {
-        if(answers.add === 'No') {
-            return; 
-        }
-    }
-},
-{
-    type: 'checkbox',
-    name:'type',
-    message:'What type of employee is this?',
-    choices:['Intern', 'Engineer', 'Manager'],
-    when: (answers) => {
-        if(answers.type == 'Intern') {
-            addIntern;
-        }
-        else if (answers.type == 'Engineer') {
-            addEngineer;
-        }
-        else{
-            addManager; 
-        }
-    }
+    type: 'list',
+    name:'employee',
+    message:'What type of employee would you like to add?',
+    choices:[addIntern(), addEngineer(), addManager()],
+ 
+
 }
 ])
     .then(employeeData => {
         
-        teamArr=[] 
+        // teamArr=[] 
 
-        const intern = new Intern(addIntern.answers); 
-        teamArr.push(intern); 
+        // const intern = new Intern(internQuestions.answers); 
+        // teamArr.push(intern); 
 
-        const engineer = new Engineer(addEngineer.answers);
-        teamArr.push(engineer);
+        // const engineer = new Engineer(engineerQuestions.answers);
+        // teamArr.push(engineer);
         
-        const manager = new Manager(addManager.answers);
-        teamArr.push(manager); 
+        // const manager = new Manager(managerQuestions.answers);
+        // teamArr.push(manager); 
 
         console.log(employeeData)
-        const pageTemplate= generatePage(teamArr);
-        fs.writeFile('./dist/index.html', pageTemplate, err => {
-            if(err) {
-               return console.log(err); 
-            }
-           console.log('File saved!')
-        });
+    //     const pageTemplate= generatePage(teamArr);
+    //     fs.writeFile('./dist/index.html', pageTemplate, err => {
+    //         if(err) {
+    //            return console.log(err); 
+    //         }
+    //        console.log('File saved!')
+    //     });
         
-    })
-    .catch(err => {
-        console.log(err)
-    })
- } 
+    // })
+    // .catch(err => {
+    //     console.log(err)
+    // })
+ })
+}
 
-const addIntern = [
+function addIntern() {
+return inquirer 
+.prompt ([
         {
             type: 'text',
             name: 'name',
@@ -108,13 +93,16 @@ const addIntern = [
             message:'Would you like to add another employee?',
             when: (answers) => {
                 if(answers.more === 'Yes') {
-                    return inquirer
+                    return promptQuestions(); 
                 }
             }
         }
-    ]
+    ])
+} 
     
-const addEngineer = [
+function addEngineer() {
+    return inquirer
+    .prompt([
         {
             type: 'text',
             name: 'name',
@@ -161,9 +149,12 @@ const addEngineer = [
                 }
             }
         }
-    ]
+    ])
+}
 
-const addManager = [
+function addManager() {
+    return inquirer 
+    .prompt([
         {
             type: 'text',
             name: 'name',
@@ -210,6 +201,7 @@ const addManager = [
                 }
             }
         }
-    ]
+    ])
+} 
 
 promptQuestions(); 
