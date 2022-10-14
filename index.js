@@ -7,9 +7,17 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
 const promptEmployee = employeeData => {
-
     return inquirer
     .prompt([
+        // first ask do you want to add an employee
+// then ask what kind of employee, based on answer, call function to save the data about to be created 
+{
+    type: 'checkbox',
+    name:'type',
+    message:'What type of employee is this?',
+    choices:['Intern', 'Engineer', 'Manager'] 
+},
+// then ask questions for employee and for specific type of employee based on response 
         {
             type: 'text',
             name: 'name',
@@ -41,13 +49,8 @@ const promptEmployee = employeeData => {
             name: 'email',
             message: "What is the employee's email?"
         },
-        {
-            type: 'checkbox',
-            name:'type',
-            message:'What type of employee is this?',
-            choices:['Intern', 'Engineer', 'Manager'] 
-        },
-        // make it so one of these shows up when the corresponding selection is made 
+    
+      
         {
             type: 'text',
             name: 'github',
@@ -64,7 +67,11 @@ const promptEmployee = employeeData => {
             message: "What is the manager's office number?"
         }
     ])
+    // ask if want to add any more employee's 
+    // based on response, either move on or rerun prompt. 
     .then(employeeData => {
+        //convert into classes, into arr 
+        //create team 
         console.log(employeeData)
         const pageTemplate= generatePage(employeeData);
         fs.writeFile('./dist/index.html', pageTemplate, err => {
@@ -72,13 +79,6 @@ const promptEmployee = employeeData => {
                return console.log(err); 
             }
            console.log('File saved!')
-        });
-
-        fs.copyfile('./src/style.css', './dist/style.css', err => {
-            if(err) {
-                return console.log(err)
-            }
-            console.log('Stylesheet created!')
         });
         
     })

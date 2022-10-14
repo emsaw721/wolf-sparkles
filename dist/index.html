@@ -19,38 +19,29 @@
         </header>
         
         <main class="container my-5">
-            studentArr => {
-    return `
-    <section class="my-3" id="intern">
-    <h2 class="text-dark bg-primary p-2 display-inline-block">Interns</h2>
-    <div class="flex-row justify-space-between">
-    ${studentArr
-    .filter(({feature}) => feature)
-    // doesn't like .filter(saying cannot read properties of undefined), probably won't like .map either
-    .map(({ name, id, email, school}) => {
+        <section class="my-3" id="intern">
+        <h2 class="text-dark bg-primary p-2 display-inline-block">Interns</h2>
+        <div class="flex-row justify-space-between">
+            internArr => {
+ 
         return `
         <div class="col-12 mb-2 bg-dark text-light p-3>
         <h3 class="employee-name text-light">${name}</h3>
         <h5 class="employee-info">
+        // maybe try using prototype here? because need to get the stuff from employee 
             ID: ${id}
             Email: ${email}
             School: ${school}
         </div>
         `; 
-    })
-    .join('')} 
-    </div>
-    </section>
-    `; 
 }
-            engineerArr => {
-        return `
+        </div>
+        </section> 
         <section class="my-3" id="engineer">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Engineers</h2>
         <div class="flex-row justify-space-between">
-        ${engineerArr
-        .filer(({feature}) => feature)
-        .map(({ name, id, email, github}) => {
+            engineerArr => {
+
             return `
             <div class="col-12 mb-2 bg-dark text-light p-3>
             <h3 class="employee-name text-light">${name}</h3>
@@ -60,20 +51,14 @@
                 Github: ${github}
             </div>
             `; 
-        })
-        .join('')} 
-        </div>
-        </section>
-        `; 
-}
-            managerArr => {
-            return `
+        }
+            </div>
+            </section>
             <section class="my-3" id="manager">
             <h2 class="text-dark bg-primary p-2 display-inline-block">Managers</h2>
             <div class="flex-row justify-space-between">
-            ${managerArr
-            .filer(({feature}) => feature)
-            .map(({ name, id, email, officeNumber}) => {
+            managerArr => {
+      
                 return `
                 <div class="col-12 mb-2 bg-dark text-light p-3>
                 <h3 class="employee-name text-light">${name}</h3>
@@ -83,12 +68,9 @@
                     Office Number: ${officeNumber}
                 </div>
                 `; 
-            })
-            .join('')} 
+            }
             </div>
             </section>
-            `; 
-        }
         </main>
         </body>
         </html>
