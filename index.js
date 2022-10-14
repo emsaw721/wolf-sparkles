@@ -7,8 +7,7 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
 function promptEmployee() {
-inquirer
-    .prompt([
+inquirer.prompt([
 {
     type: 'confirm',
     name:'add',
@@ -38,24 +37,18 @@ inquirer
 }
     ])
     .then(employeeData => {
-        const intern = new Intern(addIntern.name, addIntern.id, addIntern.email, addIntern.school); 
-        internArr.push(intern); 
-
-        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
-        engineerArr.push(engineer);
         
-        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
-        managerArr.push(manager); 
+        teamArr=[] 
 
-        teamArr= [internArr, engineerArr, managerArr];
+        const intern = new Intern(addIntern.answers); 
+        teamArr.push(intern); 
 
-        let internArr = []
-        let engineerArr = [] 
-        let managerArr = []
+        const engineer = new Engineer(addEngineer.answers);
+        teamArr.push(engineer);
+        
+        const manager = new Manager(addManager.answers);
+        teamArr.push(manager); 
 
-        console.log(teamArr)
-        //convert into classes, into arr 
-        //create team 
         console.log(employeeData)
         const pageTemplate= generatePage(teamArr);
         fs.writeFile('./dist/index.html', pageTemplate, err => {
@@ -69,7 +62,7 @@ inquirer
     .catch(err => {
         console.log(err)
     })
-}
+ }
 
 function addIntern()  {
   
