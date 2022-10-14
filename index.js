@@ -6,8 +6,9 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-function promptEmployee() {
-inquirer.prompt([
+const promptQuestions = employeeData => {
+return inquirer
+.prompt([
 {
     type: 'confirm',
     name:'add',
@@ -25,17 +26,17 @@ inquirer.prompt([
     choices:['Intern', 'Engineer', 'Manager'],
     when: (answers) => {
         if(answers.type == 'Intern') {
-            addIntern();
+            addIntern;
         }
         else if (answers.type == 'Engineer') {
-            addEngineer();
+            addEngineer;
         }
         else{
-            addManager(); 
+            addManager; 
         }
     }
 }
-    ])
+])
     .then(employeeData => {
         
         teamArr=[] 
@@ -62,11 +63,9 @@ inquirer.prompt([
     .catch(err => {
         console.log(err)
     })
- }
+ } 
 
-function addIntern()  {
-  
-    [
+const addIntern = [
         {
             type: 'text',
             name: 'name',
@@ -114,10 +113,8 @@ function addIntern()  {
             }
         }
     ]
-    }
     
-function addEngineer() {
-    [
+const addEngineer = [
         {
             type: 'text',
             name: 'name',
@@ -165,10 +162,8 @@ function addEngineer() {
             }
         }
     ]
-    }
-    
-function addManager() {
-    [
+
+const addManager = [
         {
             type: 'text',
             name: 'name',
@@ -216,6 +211,5 @@ function addManager() {
             }
         }
     ]
-    }
 
-promptEmployee(); 
+promptQuestions(); 
