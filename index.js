@@ -12,41 +12,52 @@ return inquirer
 .prompt([
 {
     type: 'list',
-    name:'employee',
+    name:'add',
     message:'What type of employee would you like to add?',
-    choices:[addIntern(), addEngineer(), addManager()],
- 
-
+    choices:['Intern', 'Engineer', 'Manager'],
+   
 }
 ])
+.then(function(userInput) {
+    switch(userInput.add){
+        case 'Intern':
+            addIntern();
+            break; 
+        case'Engineer':
+            addEngineer();
+            break; 
+        case 'Manager':
+            addManager();
+            break; 
+    }
+})
     .then(employeeData => {
         
-        // teamArr=[] 
+        teamArr=[] 
 
-        // const intern = new Intern(internQuestions.answers); 
-        // teamArr.push(intern); 
+        const intern = new Intern(addIntern.answers); 
+        teamArr.push(intern); 
 
-        // const engineer = new Engineer(engineerQuestions.answers);
-        // teamArr.push(engineer);
+        const engineer = new Engineer(addEngineer.answers);
+        teamArr.push(engineer);
         
-        // const manager = new Manager(managerQuestions.answers);
-        // teamArr.push(manager); 
+        const manager = new Manager(addManager.answers);
+        teamArr.push(manager); 
 
-        console.log(employeeData)
-    //     const pageTemplate= generatePage(teamArr);
-    //     fs.writeFile('./dist/index.html', pageTemplate, err => {
-    //         if(err) {
-    //            return console.log(err); 
-    //         }
-    //        console.log('File saved!')
-    //     });
+        console.log(teamArr)
+        const pageTemplate= generatePage(teamArr);
+        fs.writeFile('./dist/index.html', pageTemplate, err => {
+            if(err) {
+               return console.log(err); 
+            }
+           console.log('File saved!')
+        });
         
-    // })
-    // .catch(err => {
-    //     console.log(err)
-    // })
- })
-}
+    })
+    .catch(err => {
+        console.log(err)
+    })
+ }
 
 function addIntern() {
 return inquirer 
