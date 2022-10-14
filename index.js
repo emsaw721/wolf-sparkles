@@ -19,6 +19,7 @@ return inquirer
 }
 ])
 .then(function(userInput) {
+    // switch does a strict comparison between input expression and case expression 
     switch(userInput.add){
         case 'Intern':
             addIntern();
@@ -43,17 +44,17 @@ return inquirer
         
         const manager = new Manager(addManager.answers);
         teamArr.push(manager); 
-
-        console.log(teamArr)
-        const pageTemplate= generatePage(teamArr);
-        fs.writeFile('./dist/index.html', pageTemplate, err => {
-            if(err) {
-               return console.log(err); 
-            }
-           console.log('File saved!')
-        });
-        
+ 
     })
+    // .then(createPage => {
+    //        const pageTemplate= generatePage(teamArr);
+    //     fs.writeFile('./dist/index.html', pageTemplate, err => {
+    //         if(err) {
+    //            return console.log(err); 
+    //         }
+    //        console.log('File saved!')
+    //     });
+    // })
     .catch(err => {
         console.log(err)
     })
