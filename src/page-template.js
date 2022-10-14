@@ -7,9 +7,9 @@ const generateIntern = internArr => {
         <h3 class="employee-name text-light">${name}</h3>
         <h5 class="employee-info">
         // maybe try using prototype here? because need to get the stuff from employee 
-            ID: ${id}
-            Email: ${email}
-            School: ${school}
+            ID: ${internArr.id}
+            Email: ${internArr.email}
+            School: ${internArr.school}
         </div>
         `; 
 }; 
@@ -20,9 +20,9 @@ const generateEngineer = engineerArr => {
             <div class="col-12 mb-2 bg-dark text-light p-3>
             <h3 class="employee-name text-light">${name}</h3>
             <h5 class="employee-info">
-                ID: ${id}
-                Email: ${email}
-                Github: ${github}
+                ID: ${engineerArr.id}
+                Email: ${engineerArr.email}
+                Github: ${engineerArr.github}
             </div>
             `; 
         }
@@ -35,9 +35,9 @@ const generateManager = managerArr => {
                 <div class="col-12 mb-2 bg-dark text-light p-3>
                 <h3 class="employee-name text-light">${name}</h3>
                 <h5 class="employee-info">
-                    ID: ${id}
-                    Email: ${email}
-                    Office Number: ${officeNumber}
+                    ID: ${managerArr.id}
+                    Email: ${managerArr.email}
+                    Office Number: ${managerArr.officeNumber}
                 </div>
                 `; 
             }
@@ -73,13 +73,13 @@ module.exports = templateData => {
         <section class="my-3" id="engineer">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Engineers</h2>
         <div class="flex-row justify-space-between">
-            ${generateEngineer()}
+            ${generateEngineer(engineerArr)}
             </div>
             </section>
             <section class="my-3" id="manager">
             <h2 class="text-dark bg-primary p-2 display-inline-block">Managers</h2>
             <div class="flex-row justify-space-between">
-            ${generateManager()}
+            ${generateManager(managerArr)}
             </div>
             </section>
         </main>
