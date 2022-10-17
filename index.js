@@ -34,20 +34,9 @@ return inquirer
             break; 
     }
 })
-    .then(employeeData => {
-        
-        const intern = new Intern(addIntern.answers); 
-        teamArr.push(intern); 
+ }
 
-        const engineer = new Engineer(addEngineer.answers);
-        teamArr.push(engineer);
-        
-        const manager = new Manager(addManager.answers);
-        teamArr.push(manager); 
-
- 
-    })
-    // .then(createPage => {
+ function createPage() {
     //        const pageTemplate= generatePage(teamArr);
     //     fs.writeFile('./dist/index.html', pageTemplate, err => {
     //         if(err) {
@@ -55,7 +44,6 @@ return inquirer
     //         }
     //        console.log('File saved!')
     //     });
-    // })
     .catch(err => {
         console.log(err)
     })
@@ -71,6 +59,7 @@ return inquirer
             validate: nameInput => {
                 if(nameInput) {
                     return true;
+                    createPage(); 
                 } else {
                     console.log("Please type the employee's name.");
                     return false; 
@@ -101,16 +90,33 @@ return inquirer
             message: "What is the intern's school name?"
         },
         {
-            type:'confirm',
+            type:'input',
             name:'more',
             message:'Would you like to add another employee?',
-            when: (answers) => {
-                if(answers.more === 'Yes') {
-                    return promptQuestions(); 
+            validate: moreInput => {
+                if(moreInput == 'No') {
+                     return true; 
                 }
+                promptQuestions(); 
             }
         }
-    ])
+    ])   
+     .then(employeeData => {
+        console.log(employeeData)
+        
+        const intern = new Intern(employeeData.addIntern); 
+        teamArr.push(intern); 
+
+        const engineer = new Engineer(employeeData.addEngineer);
+        teamArr.push(engineer);
+        
+        const manager = new Manager(employeeData.addManager);
+        teamArr.push(manager); 
+
+        console.log(teamArr)
+
+ 
+    })
 } 
     
 function addEngineer() {
@@ -163,6 +169,22 @@ function addEngineer() {
             }
         }
     ])
+    .then(employeeData => {
+        console.log(employeeData)
+        
+        const intern = new Intern(addIntern.answers); 
+        teamArr.push(intern); 
+
+        const engineer = new Engineer(addEngineer.answers);
+        teamArr.push(engineer);
+        
+        const manager = new Manager(addManager.answers);
+        teamArr.push(manager); 
+
+        console.log(teamArr)
+
+ 
+    })
 }
 
 function addManager() {
@@ -215,6 +237,22 @@ function addManager() {
             }
         }
     ])
+    .then(employeeData => {
+        console.log(employeeData)
+        
+        const intern = new Intern(addIntern.answers); 
+        teamArr.push(intern); 
+
+        const engineer = new Engineer(addEngineer.answers);
+        teamArr.push(engineer);
+        
+        const manager = new Manager(addManager.answers);
+        teamArr.push(manager); 
+
+        console.log(teamArr)
+
+ 
+    })
 } 
 
 promptQuestions(); 
