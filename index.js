@@ -100,9 +100,7 @@ return inquirer
         }
     ])   
      .then(result => {
-        console.log(result)
         const intern = new Intern(result.name, result.id, result.email, result.school); 
-        console.log(intern)
         internArr.push(intern); 
         console.log(internArr) 
     })
@@ -160,9 +158,9 @@ function addEngineer() {
         }
     ])
     .then(result => {
-            console.log(result)
-            const engineer = new Engineer(result); 
+            const engineer = new Engineer(result.name, result.id, result.email, result.github); 
             engineerArr.push(engineer); 
+            console.log(engineerArr)
         })
     }
 
@@ -217,9 +215,9 @@ function addManager() {
         }
     ])
     .then(result => {
-        console.log(result)
-        const manager = new Manager(result);
+        const manager = new Manager(result.name, result.id, result.email, result.officeNumber);
         managerArr.push(manager);
+        console.log(managerArr); 
     })
 } 
 
