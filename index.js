@@ -6,6 +6,8 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
+teamArr=[] 
+
 
 const promptQuestions = employeeData => {
 return inquirer
@@ -34,8 +36,6 @@ return inquirer
 })
     .then(employeeData => {
         
-        teamArr=[] 
-
         const intern = new Intern(addIntern.answers); 
         teamArr.push(intern); 
 
@@ -44,6 +44,7 @@ return inquirer
         
         const manager = new Manager(addManager.answers);
         teamArr.push(manager); 
+
  
     })
     // .then(createPage => {
