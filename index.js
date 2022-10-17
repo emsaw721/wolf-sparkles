@@ -91,18 +91,12 @@ return inquirer
             name:'more',
             message:'Would you like to add another employee?',
             validate: moreInput => {
-                switch(moreInput) {
-                    case 'Yes':
-                        promptQuestions();
-                        break; 
-                    case 'yes':
-                        promptQuestions();
-                        break;
-                    case 'No':
-                        return true; 
-                    case 'no':
-                        return true; 
-                }
+                if(moreInput == 'No') {
+                     return true;  
+                } 
+                // else {
+                //     return promptQuestions(); 
+                // }
             }
         }
     ])   
@@ -165,18 +159,9 @@ function addEngineer() {
             type:'input',
             name:'more',
             message:'Would you like to add another employee?',
-            validate: moreInput => {
-                switch(moreInput) {
-                    case 'Yes':
-                        promptQuestions();
-                        break; 
-                    case 'yes':
-                        promptQuestions();
-                        break;
-                    case 'No':
-                        return true; 
-                    case 'no':
-                        return true; 
+            when: (answers) => {
+                if(answers.more == 'No') {
+                    return true; 
                 }
             }
         }
@@ -239,18 +224,9 @@ function addManager() {
             type:'input',
             name:'more',
             message:'Would you like to add another employee?',
-            validate: moreInput => {
-                switch(moreInput) {
-                    case 'Yes':
-                        promptQuestions();
-                        break; 
-                    case 'yes':
-                        promptQuestions();
-                        break;
-                    case 'No':
-                        return true; 
-                    case 'no':
-                        return true; 
+            when: (answers) => {
+                if(answers.more === 'No') {
+                    return true; 
                 }
             }
         }
