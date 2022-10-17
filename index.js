@@ -101,7 +101,7 @@ return inquirer
     ])   
      .then(result => {
         console.log(result)
-        const intern = new Intern(answer.name, answer.id, answer.email, answer.school); 
+        const intern = new Intern(result.name, result.id, result.email, result.school); 
         console.log(intern)
         internArr.push(intern); 
         console.log(internArr) 
