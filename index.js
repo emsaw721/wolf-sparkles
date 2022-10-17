@@ -54,7 +54,7 @@ return inquirer
 .prompt ([
         {
             type: 'text',
-            name: 'internName',
+            name: 'name',
             message: 'What is the employee name?(Required)',
             validate: nameInput => {
                 if(nameInput) {
@@ -101,7 +101,7 @@ return inquirer
     ])   
      .then(result => {
         console.log(result)
-        const intern = new Intern(result); 
+        const intern = new Intern(answer.name, answer.id, answer.email, answer.school); 
         console.log(intern)
         internArr.push(intern); 
         console.log(internArr) 
@@ -114,7 +114,7 @@ function addEngineer() {
     .prompt([
         {
             type: 'text',
-            name: 'engineerName',
+            name: 'name',
             message: 'What is the employee name?(Required)',
             validate: nameInput => {
                 if(nameInput) {
@@ -171,7 +171,7 @@ function addManager() {
     .prompt([
         {
             type: 'text',
-            name: 'managerName',
+            name: 'name',
             message: 'What is the employee name?(Required)',
             validate: nameInput => {
                 if(nameInput) {
