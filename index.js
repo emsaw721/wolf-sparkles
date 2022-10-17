@@ -34,20 +34,18 @@ return inquirer
             break; 
     }
 })
- }
+// .all( createPage => {
+//     const pageTemplate= generatePage(teamArr);
+//     fs.writeFile('./dist/index.html', pageTemplate, err => {
+//         if(err) {
+//            return console.log(err); 
+//         }
+//        console.log('File saved!')
+//     })
+    
+// })
+}
 
- function createPage() {
-    //        const pageTemplate= generatePage(teamArr);
-    //     fs.writeFile('./dist/index.html', pageTemplate, err => {
-    //         if(err) {
-    //            return console.log(err); 
-    //         }
-    //        console.log('File saved!')
-    //     });
-    .catch(err => {
-        console.log(err)
-    })
- }
 
 function addIntern() {
 return inquirer 
@@ -59,7 +57,6 @@ return inquirer
             validate: nameInput => {
                 if(nameInput) {
                     return true;
-                    createPage(); 
                 } else {
                     console.log("Please type the employee's name.");
                     return false; 
@@ -95,9 +92,10 @@ return inquirer
             message:'Would you like to add another employee?',
             validate: moreInput => {
                 if(moreInput == 'No') {
-                     return true; 
+                     return true;  
+                // } else{
+                // promptQuestions(); 
                 }
-                promptQuestions(); 
             }
         }
     ])   
@@ -254,5 +252,16 @@ function addManager() {
  
     })
 } 
+
+
+function createPage() {
+    const pageTemplate= generatePage(teamArr);
+ fs.writeFile('./dist/index.html', pageTemplate, err => {
+     if(err) {
+        return console.log(err); 
+     }
+    console.log('File saved!')
+ });
+}
 
 promptQuestions(); 
