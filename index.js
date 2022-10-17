@@ -6,7 +6,9 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-teamArr=[] 
+const internArr = [] 
+const engineerArr = []
+const managerArr = [] 
 
 
 const promptQuestions = employeeData => {
@@ -34,8 +36,9 @@ return inquirer
             break; 
     }
 })
-// .all( createPage => {
-//     const pageTemplate= generatePage(teamArr);
+// .then(employeeData => {
+//     console.log(employeeData)
+//     const pageTemplate= generatePage(internArr, engineerArr, managerArr);
 //     fs.writeFile('./dist/index.html', pageTemplate, err => {
 //         if(err) {
 //            return console.log(err); 
@@ -52,7 +55,7 @@ return inquirer
 .prompt ([
         {
             type: 'text',
-            name: 'name',
+            name: 'internName',
             message: 'What is the employee name?(Required)',
             validate: nameInput => {
                 if(nameInput) {
@@ -93,27 +96,14 @@ return inquirer
             validate: moreInput => {
                 if(moreInput == 'No') {
                      return true;  
-                // } else{
-                // promptQuestions(); 
-                }
+                } 
             }
         }
     ])   
-     .then(employeeData => {
-        console.log(employeeData)
-        
-        const intern = new Intern(employeeData.addIntern); 
-        teamArr.push(intern); 
-
-        const engineer = new Engineer(employeeData.addEngineer);
-        teamArr.push(engineer);
-        
-        const manager = new Manager(employeeData.addManager);
-        teamArr.push(manager); 
-
-        console.log(teamArr)
-
- 
+     .then(result => {
+        console.log(result)
+        const intern = new Intern(result); 
+        internArr.push(intern); 
     })
 } 
     
@@ -167,21 +157,11 @@ function addEngineer() {
             }
         }
     ])
-    .then(employeeData => {
-        console.log(employeeData)
-        
-        const intern = new Intern(addIntern.answers); 
-        teamArr.push(intern); 
-
+    .then(() => {
         const engineer = new Engineer(addEngineer.answers);
-        teamArr.push(engineer);
+        engineerArr.push(engineer);
         
-        const manager = new Manager(addManager.answers);
-        teamArr.push(manager); 
-
-        console.log(teamArr)
-
- 
+        console.log(engineerArr)
     })
 }
 
@@ -235,33 +215,12 @@ function addManager() {
             }
         }
     ])
-    .then(employeeData => {
-        console.log(employeeData)
-        
-        const intern = new Intern(addIntern.answers); 
-        teamArr.push(intern); 
-
-        const engineer = new Engineer(addEngineer.answers);
-        teamArr.push(engineer);
-        
+    .then(() => {
         const manager = new Manager(addManager.answers);
-        teamArr.push(manager); 
+        managerArr.push(manager); 
 
-        console.log(teamArr)
-
- 
+        console.log(managerArr)
     })
 } 
-
-
-function createPage() {
-    const pageTemplate= generatePage(teamArr);
- fs.writeFile('./dist/index.html', pageTemplate, err => {
-     if(err) {
-        return console.log(err); 
-     }
-    console.log('File saved!')
- });
-}
 
 promptQuestions(); 
