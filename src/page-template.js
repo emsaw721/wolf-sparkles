@@ -1,14 +1,15 @@
 // only one return per function 
 
+
 const generateIntern = internArr => {
         return `
         <div class="col-12 mb-2 bg-dark text-light p-3>
-        <h3 class="employee-name text-light">${internArr.name}</h3>
+        <h3 class="employee-name text-light">${intern.name}</h3>
         <h5 class="employee-info">
         // maybe try using prototype here? because need to get the stuff from employee 
-            ID: ${internArr.id}
-            Email: ${internArr.email}
-            School: ${internArr.school}
+            ID: ${intern.id}
+            Email: ${intern.email}
+            School: ${intern.school}
         </div>
         `; 
 }; 
@@ -16,11 +17,11 @@ const generateIntern = internArr => {
 const generateEngineer = engineerArr => {
             return `
             <div class="col-12 mb-2 bg-dark text-light p-3>
-            <h3 class="employee-name text-light">${engineerArr.name}</h3>
+            <h3 class="employee-name text-light">${engineer.name}</h3>
             <h5 class="employee-info">
-                ID: ${engineerArr.id}
-                Email: ${engineerArr.email}
-                Github: ${engineerArr.github}
+                ID: ${engineer.id}
+                Email: ${engineer.email}
+                Github: ${engineer.github}
             </div>
             `; 
         }
@@ -30,11 +31,11 @@ const generateEngineer = engineerArr => {
 const generateManager = managerArr => {
                 return `
                 <div class="col-12 mb-2 bg-dark text-light p-3>
-                <h3 class="employee-name text-light">${managerArr.name}</h3>
+                <h3 class="employee-name text-light">${manager.name}</h3>
                 <h5 class="employee-info">
-                    ID: ${managerArr.id}
-                    Email: ${managerArr.email}
-                    Office Number: ${managerArr.officeNumber}
+                    ID: ${manager.id}
+                    Email: ${manager.email}
+                    Office Number: ${manager.officeNumber}
                 </div>
                 `; 
             }

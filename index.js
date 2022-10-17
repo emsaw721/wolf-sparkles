@@ -6,9 +6,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-const internArr = [] 
-const engineerArr = []
-const managerArr = [] 
+const teamArr = [] 
 
 const promptQuestions = employeeData => {
 return inquirer
@@ -96,13 +94,24 @@ return inquirer
                 if(moreInput == 'No') {
                      return true;  
                 } 
+                // else {
+                //     return promptQuestions(); 
+                // }
             }
         }
     ])   
      .then(result => {
         const intern = new Intern(result.name, result.id, result.email, result.school); 
-        internArr.push(intern); 
-        console.log(internArr) 
+        teamArr.push(intern); 
+        console.log(teamArr) 
+
+        const manager = new Manager(result.name, result.id, result.email, result.officeNumber);
+        teamArr.push(manager);
+        console.log(teamArr); 
+
+        const engineer = new Engineer(result.name, result.id, result.email, result.github); 
+        teamArr.push(engineer); 
+        console.log(teamArr)
     })
   
 } 
@@ -147,11 +156,11 @@ function addEngineer() {
             message: "What is the engineer's Github username?"
         },
         {
-            type:'confirm',
+            type:'input',
             name:'more',
             message:'Would you like to add another employee?',
             when: (answers) => {
-                if(answers.more === 'No') {
+                if(answers.more == 'No') {
                     return true; 
                 }
             }
@@ -159,8 +168,16 @@ function addEngineer() {
     ])
     .then(result => {
             const engineer = new Engineer(result.name, result.id, result.email, result.github); 
-            engineerArr.push(engineer); 
-            console.log(engineerArr)
+            teamArr.push(engineer); 
+            console.log(teamArr)
+
+            const intern = new Intern(result.name, result.id, result.email, result.school); 
+            teamArr.push(intern); 
+            console.log(teamArr) 
+
+            const manager = new Manager(result.name, result.id, result.email, result.officeNumber);
+            teamArr.push(manager);
+            console.log(teamArr); 
         })
     }
 
@@ -204,7 +221,7 @@ function addManager() {
             message: "What is the manager's office number?"
         },
         {
-            type:'confirm',
+            type:'input',
             name:'more',
             message:'Would you like to add another employee?',
             when: (answers) => {
@@ -216,8 +233,16 @@ function addManager() {
     ])
     .then(result => {
         const manager = new Manager(result.name, result.id, result.email, result.officeNumber);
-        managerArr.push(manager);
-        console.log(managerArr); 
+        teamArr.push(manager);
+        console.log(teamArr); 
+
+        const intern = new Intern(result.name, result.id, result.email, result.school); 
+        teamArr.push(intern); 
+        console.log(teamArr) 
+
+        const engineer = new Engineer(result.name, result.id, result.email, result.github); 
+        teamArr.push(engineer); 
+        console.log(teamArr)
     })
 } 
 
