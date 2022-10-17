@@ -7,11 +7,8 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
 const internArr = [] 
-console.log(internArr)
 const engineerArr = []
-console.log(engineerArr)
 const managerArr = [] 
-console.log(managerArr) 
 
 const promptQuestions = employeeData => {
 return inquirer
@@ -103,7 +100,8 @@ return inquirer
         }
     ])   
      .then(result => {
-        const intern = new Intern(result.internName, result.id, result.email, result.school); 
+        console.log(result)
+        const intern = new Intern(result); 
         console.log(intern)
         internArr.push(intern); 
         console.log(internArr) 
