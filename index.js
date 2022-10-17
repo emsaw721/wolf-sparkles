@@ -36,17 +36,17 @@ return inquirer
             break; 
     }
 })
-// .then(employeeData => {
-//     console.log(employeeData)
-//     const pageTemplate= generatePage(internArr, engineerArr, managerArr);
-//     fs.writeFile('./dist/index.html', pageTemplate, err => {
-//         if(err) {
-//            return console.log(err); 
-//         }
-//        console.log('File saved!')
-//     })
+.then(employeeData => {
+    console.log(employeeData)
+    const pageTemplate= generatePage(internArr, engineerArr, managerArr);
+    fs.writeFile('./dist/index.html', pageTemplate, err => {
+        if(err) {
+           return console.log(err); 
+        }
+       console.log('File saved!')
+    })
     
-// })
+})
 }
 
 
@@ -112,7 +112,7 @@ function addEngineer() {
     .prompt([
         {
             type: 'text',
-            name: 'name',
+            name: 'engineerName',
             message: 'What is the employee name?(Required)',
             validate: nameInput => {
                 if(nameInput) {
@@ -151,26 +151,25 @@ function addEngineer() {
             name:'more',
             message:'Would you like to add another employee?',
             when: (answers) => {
-                if(answers.more === 'Yes') {
-                    return inquirer
+                if(answers.more === 'No') {
+                    return true; 
                 }
             }
         }
     ])
-    .then(() => {
-        const engineer = new Engineer(addEngineer.answers);
-        engineerArr.push(engineer);
-        
-        console.log(engineerArr)
-    })
-}
+    .then(result => {
+            console.log(result)
+            const engineer = new Engineer(result); 
+            engineerArr.push(engineer); 
+        })
+    }
 
 function addManager() {
     return inquirer 
     .prompt([
         {
             type: 'text',
-            name: 'name',
+            name: 'managerName',
             message: 'What is the employee name?(Required)',
             validate: nameInput => {
                 if(nameInput) {
@@ -209,17 +208,16 @@ function addManager() {
             name:'more',
             message:'Would you like to add another employee?',
             when: (answers) => {
-                if(answers.more === 'Yes') {
-                    return inquirer
+                if(answers.more === 'No') {
+                    return true; 
                 }
             }
         }
     ])
-    .then(() => {
-        const manager = new Manager(addManager.answers);
-        managerArr.push(manager); 
-
-        console.log(managerArr)
+    .then(result => {
+        console.log(result)
+        const manager = new Manager(result);
+        managerArr.push(manager);
     })
 } 
 
