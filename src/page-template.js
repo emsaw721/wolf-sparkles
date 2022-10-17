@@ -1,7 +1,6 @@
 // only one return per function 
 
 const generateIntern = internArr => {
- 
         return `
         <div class="col-12 mb-2 bg-dark text-light p-3>
         <h3 class="employee-name text-light">${internArr.internName}</h3>
@@ -15,7 +14,6 @@ const generateIntern = internArr => {
 }; 
 
 const generateEngineer = engineerArr => {
-
             return `
             <div class="col-12 mb-2 bg-dark text-light p-3>
             <h3 class="employee-name text-light">${engineerArr.engineerName}</h3>
@@ -30,7 +28,6 @@ const generateEngineer = engineerArr => {
     
 
 const generateManager = managerArr => {
-      
                 return `
                 <div class="col-12 mb-2 bg-dark text-light p-3>
                 <h3 class="employee-name text-light">${managerArr.managerName}</h3>

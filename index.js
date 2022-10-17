@@ -7,9 +7,11 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
 const internArr = [] 
+console.log(internArr)
 const engineerArr = []
+console.log(engineerArr)
 const managerArr = [] 
-
+console.log(managerArr) 
 
 const promptQuestions = employeeData => {
 return inquirer
@@ -36,17 +38,17 @@ return inquirer
             break; 
     }
 })
-.then(employeeData => {
-    console.log(employeeData)
-    const pageTemplate= generatePage(internArr, engineerArr, managerArr);
-    fs.writeFile('./dist/index.html', pageTemplate, err => {
-        if(err) {
-           return console.log(err); 
-        }
-       console.log('File saved!')
-    })
+// .then(employeeData => {
+//     console.log(employeeData)
+//     const pageTemplate= generatePage(internArr, engineerArr, managerArr);
+//     fs.writeFile('./dist/index.html', pageTemplate, err => {
+//         if(err) {
+//            return console.log(err); 
+//         }
+//        console.log('File saved!')
+//     })
     
-})
+// })
 }
 
 
@@ -101,10 +103,12 @@ return inquirer
         }
     ])   
      .then(result => {
-        console.log(result)
-        const intern = new Intern(result); 
+        const intern = new Intern(result.internName, result.id, result.email, result.school); 
+        console.log(intern)
         internArr.push(intern); 
+        console.log(internArr) 
     })
+  
 } 
     
 function addEngineer() {
