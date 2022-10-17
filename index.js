@@ -91,12 +91,18 @@ return inquirer
             name:'more',
             message:'Would you like to add another employee?',
             validate: moreInput => {
-                if(moreInput == 'No') {
-                     return true;  
-                } 
-                // else {
-                //     return promptQuestions(); 
-                // }
+                switch(moreInput) {
+                    case 'Yes':
+                        promptQuestions();
+                        break; 
+                    case 'yes':
+                        promptQuestions();
+                        break;
+                    case 'No':
+                        return true; 
+                    case 'no':
+                        return true; 
+                }
             }
         }
     ])   
@@ -159,9 +165,18 @@ function addEngineer() {
             type:'input',
             name:'more',
             message:'Would you like to add another employee?',
-            when: (answers) => {
-                if(answers.more == 'No') {
-                    return true; 
+            validate: moreInput => {
+                switch(moreInput) {
+                    case 'Yes':
+                        promptQuestions();
+                        break; 
+                    case 'yes':
+                        promptQuestions();
+                        break;
+                    case 'No':
+                        return true; 
+                    case 'no':
+                        return true; 
                 }
             }
         }
@@ -224,9 +239,18 @@ function addManager() {
             type:'input',
             name:'more',
             message:'Would you like to add another employee?',
-            when: (answers) => {
-                if(answers.more === 'No') {
-                    return true; 
+            validate: moreInput => {
+                switch(moreInput) {
+                    case 'Yes':
+                        promptQuestions();
+                        break; 
+                    case 'yes':
+                        promptQuestions();
+                        break;
+                    case 'No':
+                        return true; 
+                    case 'no':
+                        return true; 
                 }
             }
         }
