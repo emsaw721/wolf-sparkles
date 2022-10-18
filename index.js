@@ -33,17 +33,6 @@ return inquirer
             break; 
     }
 })
-// .then(employeeData => {
-//     console.log(employeeData)
-//     const pageTemplate= generatePage(internArr, engineerArr, managerArr);
-//     fs.writeFile('./dist/index.html', pageTemplate, err => {
-//         if(err) {
-//            return console.log(err); 
-//         }
-//        console.log('File saved!')
-//     })
-    
-// })
 }
 
 
@@ -104,14 +93,15 @@ return inquirer
         const intern = new Intern(result.name, result.id, result.email, result.school); 
         teamArr.push(intern); 
         console.log(teamArr) 
+        createPage(); 
 
-        const manager = new Manager(result.name, result.id, result.email, result.officeNumber);
-        teamArr.push(manager);
-        console.log(teamArr); 
+        // const manager = new Manager(result.name, result.id, result.email, result.officeNumber);
+        // teamArr.push(manager);
+        // console.log(teamArr); 
 
-        const engineer = new Engineer(result.name, result.id, result.email, result.github); 
-        teamArr.push(engineer); 
-        console.log(teamArr)
+        // const engineer = new Engineer(result.name, result.id, result.email, result.github); 
+        // teamArr.push(engineer); 
+        // console.log(teamArr)
     })
   
 } 
@@ -161,7 +151,7 @@ function addEngineer() {
             message:'Would you like to add another employee?',
             when: (answers) => {
                 if(answers.more == 'No') {
-                    return true; 
+                    return createPage(); 
                 }
             }
         }
@@ -171,13 +161,13 @@ function addEngineer() {
             teamArr.push(engineer); 
             console.log(teamArr)
 
-            const intern = new Intern(result.name, result.id, result.email, result.school); 
-            teamArr.push(intern); 
-            console.log(teamArr) 
+            // const intern = new Intern(result.name, result.id, result.email, result.school); 
+            // teamArr.push(intern); 
+            // console.log(teamArr) 
 
-            const manager = new Manager(result.name, result.id, result.email, result.officeNumber);
-            teamArr.push(manager);
-            console.log(teamArr); 
+            // const manager = new Manager(result.name, result.id, result.email, result.officeNumber);
+            // teamArr.push(manager);
+            // console.log(teamArr); 
         })
     }
 
@@ -226,7 +216,7 @@ function addManager() {
             message:'Would you like to add another employee?',
             when: (answers) => {
                 if(answers.more === 'No') {
-                    return true; 
+                    return createPage(); 
                 }
             }
         }
@@ -236,14 +226,26 @@ function addManager() {
         teamArr.push(manager);
         console.log(teamArr); 
 
-        const intern = new Intern(result.name, result.id, result.email, result.school); 
-        teamArr.push(intern); 
-        console.log(teamArr) 
+        // const intern = new Intern(result.name, result.id, result.email, result.school); 
+        // teamArr.push(intern); 
+        // console.log(teamArr) 
 
-        const engineer = new Engineer(result.name, result.id, result.email, result.github); 
-        teamArr.push(engineer); 
-        console.log(teamArr)
+        // const engineer = new Engineer(result.name, result.id, result.email, result.github); 
+        // teamArr.push(engineer); 
+        // console.log(teamArr)
     })
 } 
+
+function createPage() {
+ 
+        const pageTemplate= generatePage(teamArr);
+        fs.writeFile('./dist/index.html', pageTemplate, err => {
+            if(err) {
+               return console.log(err); 
+            }
+           console.log('File saved!')
+        })
+        
+}
 
 promptQuestions(); 

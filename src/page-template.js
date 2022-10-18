@@ -1,41 +1,44 @@
 // only one return per function 
 
+const Engineer = require("../lib/Engineer");
+const Intern = require('../lib/Intern')
+const Manager = require("../lib/Manager");
 
-const generateIntern = internArr => {
+
+const generateIntern = internDisplay => {
         return `
         <div class="col-12 mb-2 bg-dark text-light p-3>
-        <h3 class="employee-name text-light">${intern.name}</h3>
-        <h5 class="employee-info">
-        // maybe try using prototype here? because need to get the stuff from employee 
-            ID: ${intern.id}
-            Email: ${intern.email}
-            School: ${intern.school}
+        <h3 class="employee-name text-light">${Intern.name}</h3>
+        <h5 class="employee-info text-light">
+            ID: ${Intern.id}
+            Email: ${Intern.email}
+            School: ${Intern.school}
         </div>
         `; 
 }; 
 
-const generateEngineer = engineerArr => {
+const generateEngineer = engineerDisplay => {
             return `
             <div class="col-12 mb-2 bg-dark text-light p-3>
-            <h3 class="employee-name text-light">${engineer.name}</h3>
+            <h3 class="employee-name text-light">${Engineer.name}</h3>
             <h5 class="employee-info">
-                ID: ${engineer.id}
-                Email: ${engineer.email}
-                Github: ${engineer.github}
+                ID: ${Engineer.id}
+                Email: ${Engineer.email}
+                Github: <a href= "">${Engineer.github}</a>
             </div>
             `; 
         }
      
     
 
-const generateManager = managerArr => {
+const generateManager = managerDisplay => {
                 return `
                 <div class="col-12 mb-2 bg-dark text-light p-3>
-                <h3 class="employee-name text-light">${manager.name}</h3>
+                <h3 class="employee-name text-light">${Manager.name}</h3>
                 <h5 class="employee-info">
-                    ID: ${manager.id}
-                    Email: ${manager.email}
-                    Office Number: ${manager.officeNumber}
+                    ID: ${Manager.id}
+                    Email: ${Manager.email}
+                    Office Number: ${Manager.officeNumber}
                 </div>
                 `; 
             }
@@ -65,23 +68,23 @@ module.exports = templateData => {
         <section class="my-3" id="intern">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Interns</h2>
         <div class="flex-row justify-space-between">
-            ${generateIntern()}
+            ${generateIntern(internDisplay)}
         </div>
         </section> 
         <section class="my-3" id="engineer">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Engineers</h2>
         <div class="flex-row justify-space-between">
-            ${generateEngineer()}
+            ${generateEngineer(engineerDisplay)}
             </div>
             </section>
             <section class="my-3" id="manager">
             <h2 class="text-dark bg-primary p-2 display-inline-block">Managers</h2>
             <div class="flex-row justify-space-between">
-            ${generateManager()}
+            ${generateManager(managerDisplay)}
             </div>
             </section>
         </main>
         </body>
         </html>
         `;
-}; 
+}
