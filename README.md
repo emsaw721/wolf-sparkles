@@ -1,7 +1,7 @@
 # wolf-sparkles
 
 ## Description 
-This project creates a Team Page using node.js and CSS by first building the test functionality.
+This project generates a software engineering team HTML webpage using Node.js. 
 
 ## Table of Contents 
 [Installation](#installation)
@@ -12,10 +12,13 @@ This project creates a Team Page using node.js and CSS by first building the tes
 [License](#license)
 
 ## Installation 
+In order to run this application, the user must install the </a href="https://www.npmjs.com/package/inquirer">Inquirer</a>package and the <a href="https://www.npmjs.com/package/jest">Jest</a> package in order to collect user input and run a suit of tests, respectively. 
 
 ## Usage 
+After the user downloads the application, 
 
 ## Future Iterations 
+Future iterations of this project will include fixed formatting of the h2 heading, a smaller card display for each employee, and a photo of each employee. 
 
 ## Credits 
 
@@ -27,5 +30,6 @@ If you have any questions, you can reach me at emsaw721 or fakeemail@fake.com.
 
 ## How to Contribute 
 Users wishing to contribute can contact me at my email fakeemail@fake.com. 
+
 ## License 
 <a href='https://opensource.org/licenses/MIT/'>MIT</a> 
