@@ -9,7 +9,7 @@ const generateIntern = internDisplay => {
     //.forEach
     internDisplay.forEach((data)=> {
         template.push(`
-        <div class="col-12 mb-2 text-light p-3 bg-dark">
+        <div class="flex-column col-12 mb-2 text-light p-3 bg-dark">
         <h3 class="flex-column employee-name text-light">${data.name}</h3>
         <h5 class="flex-column employee-info text-light">
             ID: ${data.id} <br> 
@@ -32,8 +32,8 @@ const generateEngineer = engineerDisplay => {
     engineerDisplay.forEach((data) => { 
         template.push(
             `
-            <div class="col-12 mb-2 bg-dark text-light p-3 bg-dark">
-            <h3 class="employee-name text-light">${data.name}</h3>
+            <div class="flex-column col-12 mb-2 bg-dark text-light p-3 bg-dark">
+            <h3 class="flex-column employee-name text-light">${data.name}</h3>
             <h5 class="flex-column employee-info text-light">
                 ID: ${data.id} <br>
                 Email: <a href="mailto:${data.email}">${data.email}</a>
@@ -53,7 +53,7 @@ const generateManager = managerDisplay => {
     managerDisplay.forEach((data) => {
         template.push(
             `
-            <div class="col-12 mb-2 bg-dark text-light p-3">
+            <div class="flex-column col-12 mb-2 bg-dark text-light p-3">
             <h3 class="flex-column employee-name text-light">${data.name}</h3>
             <h5 class="flex-column employee-info text-light">
                 ID: ${data.id} <br>
@@ -95,22 +95,23 @@ module.exports = (internData, engineerData, managerData) => {
         <main class="container flex-column">
         <section id="intern">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Interns</h2>
-        <div class="flex-column justify-space-between bg-dark">
+        <div class="flex-row justify-space-between bg-dark">
             ${generateIntern(internData)}
         </div>
         </section> 
         <section class="my-3" id="engineer">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Engineers</h2>
-        <div class="flex-column justify-space-between bg-dark">
+        <div class="flex-row justify-space-between bg-dark">
             ${generateEngineer(engineerData)}
-            </div>
-            </section>
-            <section class="my-3" id="manager">
+        </div>
+        </section>
+
+        <section class="my-3" id="manager">
             <h2 class="text-dark bg-primary p-2 display-inline-block">Managers</h2>
-            <div class="flex-column justify-space-between bg-dark">
+            <div class="flex-row justify-space-between bg-dark">
             ${generateManager(managerData)}
             </div>
-            </section>
+         </section>
         </main>
         </body>
         </html>
