@@ -15,7 +15,7 @@ This project generates a software engineering team HTML webpage using Node.js.
 In order to run this application, the user must install the </a href="https://www.npmjs.com/package/inquirer">Inquirer</a>package and the <a href="https://www.npmjs.com/package/jest">Jest</a> package in order to collect user input and run a suit of tests, respectively. 
 
 ## Usage 
-After the user downloads the application, 
+<iframe src="https://drive.google.com/file/d/1iy0Xkv2ikgRupUbySP6NILiLO35rycrm/preview" width="640" height="480"></iframe>
 
 ## Future Iterations 
 Future iterations of this project will include fixed formatting of the h2 heading, a smaller card display for each employee, and a photo of each employee. 
