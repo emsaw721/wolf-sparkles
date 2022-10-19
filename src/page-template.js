@@ -9,12 +9,13 @@ const generateIntern = internDisplay => {
     //.forEach
     internDisplay.forEach((data)=> {
         template.push(`
-        <div class="col-12 mb-2 bg-dark text-light p-3>
-        <h3 class="employee-name text-light">${data.name}</h3>
-        <h5 class="employee-info text-light">
-            ID: ${data.id}
-            Email: ${data.email}
+        <div class="col-12 mb-2 text-light p-3 bg-dark">
+        <h3 class="flex-column employee-name text-light">${data.name}</h3>
+        <h5 class="flex-column employee-info text-light">
+            ID: ${data.id} <br> 
+            Email: <a href="mailto:${data.email}">${data.email}</a> 
             School: ${data.school}
+        </h5> 
         </div>
         `)
     })
@@ -31,12 +32,13 @@ const generateEngineer = engineerDisplay => {
     engineerDisplay.forEach((data) => { 
         template.push(
             `
-            <div class="col-12 mb-2 bg-dark text-light p-3>
+            <div class="col-12 mb-2 bg-dark text-light p-3 bg-dark">
             <h3 class="employee-name text-light">${data.name}</h3>
-            <h5 class="employee-info">
-                ID: ${data.id}
-                Email: ${data.email}
-                Github: <a href= "">${data.github}</a>
+            <h5 class="flex-column employee-info text-light">
+                ID: ${data.id} <br>
+                Email: <a href="mailto:${data.email}">${data.email}</a>
+                Github: <a href= "https://github.com/${data.github}">${data.github}</a>
+            </h5> 
             </div>
             `)
     })
@@ -51,12 +53,13 @@ const generateManager = managerDisplay => {
     managerDisplay.forEach((data) => {
         template.push(
             `
-            <div class="col-12 mb-2 bg-dark text-light p-3>
-            <h3 class="employee-name text-light">${data.name}</h3>
-            <h5 class="employee-info">
-                ID: ${data.id}
-                Email: ${data.email}
+            <div class="col-12 mb-2 bg-dark text-light p-3">
+            <h3 class="flex-column employee-name text-light">${data.name}</h3>
+            <h5 class="flex-column employee-info text-light">
+                ID: ${data.id} <br>
+                Email: <a href="mailto:${data.email}">${data.email}</a>
                 Office Number: ${data.officeNumber}
+            </h5>
             </div>
             `
         )
@@ -66,7 +69,7 @@ const generateManager = managerDisplay => {
         return templateStr; 
 
 }
-// internArr (argument- values declared within function when function called) and internData(parameter = data store) have same stuff, but are different things 
+// internArr (argument- values declared within function when function called) and internData(parameter = data store) have same contents, but are different things 
 module.exports = (internData, engineerData, managerData) => {
     return `
     <!DOCTYPE html>
@@ -84,26 +87,27 @@ module.exports = (internData, engineerData, managerData) => {
       
       <body>
         <header>
-            <div class="container flex-row justify-space-between align-center py-3">
-                <h1 class="page-title text-secondary bg-dark py-2 px-3">Employee Page</h1>
+            <div class="flex-row justify-space-between align-center">
+                <h1 class="m-3 page-title align-center">My Team</h1>
+            </div>
         </header>
         
-        <main class="container my-5">
-        <section class="my-3" id="intern">
+        <main class="container flex-column">
+        <section id="intern">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Interns</h2>
-        <div class="flex-row justify-space-between">
+        <div class="flex-column justify-space-between bg-dark">
             ${generateIntern(internData)}
         </div>
         </section> 
         <section class="my-3" id="engineer">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Engineers</h2>
-        <div class="flex-row justify-space-between">
+        <div class="flex-column justify-space-between bg-dark">
             ${generateEngineer(engineerData)}
             </div>
             </section>
             <section class="my-3" id="manager">
             <h2 class="text-dark bg-primary p-2 display-inline-block">Managers</h2>
-            <div class="flex-row justify-space-between">
+            <div class="flex-column justify-space-between bg-dark">
             ${generateManager(managerData)}
             </div>
             </section>
