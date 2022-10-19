@@ -9,7 +9,7 @@ const generateIntern = internDisplay => {
     //.forEach
     internDisplay.forEach((data)=> {
         template.push(`
-        <div class="flex-column col-12 mb-2 text-light p-3 bg-dark">
+        <div class="card flex-column text-light bg-success">
         <h3 class="flex-column employee-name text-light">${data.name}</h3>
         <h5 class="flex-column employee-info text-light">
             ID: ${data.id} <br> 
@@ -32,7 +32,7 @@ const generateEngineer = engineerDisplay => {
     engineerDisplay.forEach((data) => { 
         template.push(
             `
-            <div class="flex-column col-12 mb-2 bg-dark text-light p-3 bg-dark">
+            <div class="card flex-column text-light bg-success">
             <h3 class="flex-column employee-name text-light">${data.name}</h3>
             <h5 class="flex-column employee-info text-light">
                 ID: ${data.id} <br>
@@ -53,7 +53,7 @@ const generateManager = managerDisplay => {
     managerDisplay.forEach((data) => {
         template.push(
             `
-            <div class="flex-column col-12 mb-2 bg-dark text-light p-3">
+            <div class="card flex-column bg-success text-light">
             <h3 class="flex-column employee-name text-light">${data.name}</h3>
             <h5 class="flex-column employee-info text-light">
                 ID: ${data.id} <br>
@@ -82,33 +82,34 @@ module.exports = (internData, engineerData, managerData) => {
         <title>Employee Page</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
         <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="page.css">
       </head>
       
       <body>
         <header>
             <div class="flex-row justify-space-between align-center">
-                <h1 class="m-3 page-title align-center">My Team</h1>
+                <h1 class="bg-danger page-title align-center">My Team</h1>
             </div>
         </header>
         
-        <main class="container flex-column">
+        <main class="bg-light container flex-column">
         <section id="intern">
-        <h2 class="text-dark bg-primary p-2 display-inline-block">Interns</h2>
-        <div class="flex-row justify-space-between bg-dark">
+        <h2 class="text-dark bg-info display-inline-block">Interns</h2>
+        <div class="flex-row justify-space-between bg-light">
             ${generateIntern(internData)}
         </div>
         </section> 
-        <section class="my-3" id="engineer">
-        <h2 class="text-dark bg-primary p-2 display-inline-block">Engineers</h2>
-        <div class="flex-row justify-space-between bg-dark">
+        <section id="engineer">
+        <h2 class="text-dark bg-info display-inline-block">Engineers</h2>
+        <div class="flex-row justify-space-between bg-light">
             ${generateEngineer(engineerData)}
         </div>
         </section>
 
-        <section class="my-3" id="manager">
-            <h2 class="text-dark bg-primary p-2 display-inline-block">Managers</h2>
-            <div class="flex-row justify-space-between bg-dark">
+        <section id="manager">
+            <h2 class="text-dark bg-info display-inline-block">Managers</h2>
+            <div class="flex-row justify-space-between bg-light">
             ${generateManager(managerData)}
             </div>
          </section>
