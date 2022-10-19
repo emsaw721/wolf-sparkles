@@ -6,7 +6,9 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-const teamArr = [] 
+const internArr = [] 
+const engineerArr = []
+const managerArr = [] 
 
 const promptQuestions = employeeData => {
 return inquirer
@@ -15,7 +17,7 @@ return inquirer
     type: 'list',
     name:'add',
     message:'What type of employee would you like to add?',
-    choices:['Intern', 'Engineer', 'Manager'],
+    choices:['Intern', 'Engineer', 'Manager', 'Finish team'],
    
 }
 ])
@@ -31,6 +33,10 @@ return inquirer
         case 'Manager':
             addManager();
             break; 
+        case 'Finish team':
+            createPage();
+            break; 
+
     }
 })
 }
@@ -74,34 +80,13 @@ return inquirer
             type: 'text',
             name: 'school',
             message: "What is the intern's school name?"
-        },
-        {
-            type:'input',
-            name:'more',
-            message:'Would you like to add another employee?',
-            validate: moreInput => {
-                if(moreInput == 'No') {
-                     return true;  
-                } 
-                // else {
-                //     return promptQuestions(); 
-                // }
-            }
         }
     ])   
      .then(result => {
         const intern = new Intern(result.name, result.id, result.email, result.school); 
-        teamArr.push(intern); 
-        console.log(teamArr) 
-        createPage(); 
-
-        // const manager = new Manager(result.name, result.id, result.email, result.officeNumber);
-        // teamArr.push(manager);
-        // console.log(teamArr); 
-
-        // const engineer = new Engineer(result.name, result.id, result.email, result.github); 
-        // teamArr.push(engineer); 
-        // console.log(teamArr)
+        internArr.push(intern); 
+        console.log(internArr) 
+        promptQuestions(); 
     })
   
 } 
@@ -144,30 +129,13 @@ function addEngineer() {
             type: 'text',
             name: 'github',
             message: "What is the engineer's Github username?"
-        },
-        {
-            type:'input',
-            name:'more',
-            message:'Would you like to add another employee?',
-            when: (answers) => {
-                if(answers.more == 'No') {
-                    return createPage(); 
-                }
-            }
         }
     ])
     .then(result => {
             const engineer = new Engineer(result.name, result.id, result.email, result.github); 
-            teamArr.push(engineer); 
-            console.log(teamArr)
-
-            // const intern = new Intern(result.name, result.id, result.email, result.school); 
-            // teamArr.push(intern); 
-            // console.log(teamArr) 
-
-            // const manager = new Manager(result.name, result.id, result.email, result.officeNumber);
-            // teamArr.push(manager);
-            // console.log(teamArr); 
+            engineerArr.push(engineer); 
+            console.log(engineerArr)
+            promptQuestions(); 
         })
     }
 
@@ -209,36 +177,19 @@ function addManager() {
             type: 'text',
             name: 'officeNumber',
             message: "What is the manager's office number?"
-        },
-        {
-            type:'input',
-            name:'more',
-            message:'Would you like to add another employee?',
-            when: (answers) => {
-                if(answers.more === 'No') {
-                    return createPage(); 
-                }
-            }
         }
     ])
     .then(result => {
         const manager = new Manager(result.name, result.id, result.email, result.officeNumber);
-        teamArr.push(manager);
-        console.log(teamArr); 
-
-        // const intern = new Intern(result.name, result.id, result.email, result.school); 
-        // teamArr.push(intern); 
-        // console.log(teamArr) 
-
-        // const engineer = new Engineer(result.name, result.id, result.email, result.github); 
-        // teamArr.push(engineer); 
-        // console.log(teamArr)
+        managerArr.push(manager);
+        console.log(managerArr); 
+        promptQuestions(); 
     })
 } 
 
 function createPage() {
- 
-        const pageTemplate= generatePage(teamArr);
+ // generatePage is the function that is page-template.js 
+        const pageTemplate= generatePage(internArr, engineerArr, managerArr);
         fs.writeFile('./dist/index.html', pageTemplate, err => {
             if(err) {
                return console.log(err); 

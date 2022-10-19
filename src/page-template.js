@@ -1,49 +1,73 @@
+// this page is generatePage function 
 // only one return per function 
-
-const Engineer = require("../lib/Engineer");
-const Intern = require('../lib/Intern')
-const Manager = require("../lib/Manager");
-
-
+// define function assign parameter 
+// internDisplay = data store 
 const generateIntern = internDisplay => {
-        return `
+    const template= []
+    console.log(internDisplay)
+    // array 
+    //.forEach
+    internDisplay.forEach((data)=> {
+        template.push(`
         <div class="col-12 mb-2 bg-dark text-light p-3>
-        <h3 class="employee-name text-light">${Intern.name}</h3>
+        <h3 class="employee-name text-light">${data.name}</h3>
         <h5 class="employee-info text-light">
-            ID: ${Intern.id}
-            Email: ${Intern.email}
-            School: ${Intern.school}
+            ID: ${data.id}
+            Email: ${data.email}
+            School: ${data.school}
         </div>
-        `; 
+        `)
+    })
+   
+        const templateStr = template.join('')
+        console.log(templateStr) 
+        return templateStr; 
+        
 }; 
-
+// lexical scope : whatever function has access to / google this 
 const generateEngineer = engineerDisplay => {
-            return `
+    // can reuse const template because local 
+    const template= []
+    engineerDisplay.forEach((data) => { 
+        template.push(
+            `
             <div class="col-12 mb-2 bg-dark text-light p-3>
-            <h3 class="employee-name text-light">${Engineer.name}</h3>
+            <h3 class="employee-name text-light">${data.name}</h3>
             <h5 class="employee-info">
-                ID: ${Engineer.id}
-                Email: ${Engineer.email}
-                Github: <a href= "">${Engineer.github}</a>
+                ID: ${data.id}
+                Email: ${data.email}
+                Github: <a href= "">${data.github}</a>
             </div>
-            `; 
-        }
-     
+            `)
+    })
+        const templateStr = template.join('')
+        console.log(templateStr)
+        return templateStr; 
     
-
+}; 
+    
 const generateManager = managerDisplay => {
-                return `
-                <div class="col-12 mb-2 bg-dark text-light p-3>
-                <h3 class="employee-name text-light">${Manager.name}</h3>
-                <h5 class="employee-info">
-                    ID: ${Manager.id}
-                    Email: ${Manager.email}
-                    Office Number: ${Manager.officeNumber}
-                </div>
-                `; 
-            }
+    const template = []
+    managerDisplay.forEach((data) => {
+        template.push(
+            `
+            <div class="col-12 mb-2 bg-dark text-light p-3>
+            <h3 class="employee-name text-light">${data.name}</h3>
+            <h5 class="employee-info">
+                ID: ${data.id}
+                Email: ${data.email}
+                Office Number: ${data.officeNumber}
+            </div>
+            `
+        )
+    })
+        const templateStr = template.join('')
+        console.log(templateStr)
+        return templateStr; 
 
-module.exports = templateData => {
+}
+// internArr (argument- values declared within function when function called) and internData(parameter = data store) have same stuff, but are different things 
+module.exports = (internData, engineerData, managerData) => {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -68,19 +92,19 @@ module.exports = templateData => {
         <section class="my-3" id="intern">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Interns</h2>
         <div class="flex-row justify-space-between">
-            ${generateIntern(internDisplay)}
+            ${generateIntern(internData)}
         </div>
         </section> 
         <section class="my-3" id="engineer">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Engineers</h2>
         <div class="flex-row justify-space-between">
-            ${generateEngineer(engineerDisplay)}
+            ${generateEngineer(engineerData)}
             </div>
             </section>
             <section class="my-3" id="manager">
             <h2 class="text-dark bg-primary p-2 display-inline-block">Managers</h2>
             <div class="flex-row justify-space-between">
-            ${generateManager(managerDisplay)}
+            ${generateManager(managerData)}
             </div>
             </section>
         </main>
